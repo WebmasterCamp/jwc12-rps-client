@@ -62,7 +62,7 @@
       {/if}
     </main>
   </Route>
-  <Route path="tofu-eating-cat">
+  <Route path="/tofu-eating-cat">
     <button
       class="text-8xl p-2 border-2"
       on:click={() => {
