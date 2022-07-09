@@ -1,6 +1,9 @@
 <script>
   import { io } from "socket.io-client";
-  const socket = io("ws://localhost:8080", { transports: ["websocket"] });
+  const socket = io(
+    "https://9d48-2001-44c8-428c-82d6-b077-bd9b-34af-5647.ap.ngrok.io",
+    { transports: ["websocket"] }
+  );
   console.log(socket);
   socket.on("portal", (arg) => {
     console.log(arg);
