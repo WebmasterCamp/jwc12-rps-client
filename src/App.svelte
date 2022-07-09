@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import { Router, Link, Route, navigate } from "svelte-navigator";
   const socket = io(
-    "https://9d48-2001-44c8-428c-82d6-b077-bd9b-34af-5647.ap.ngrok.io",
+    "https://15fa-2001-44c8-428c-82d6-29f1-ece2-997d-3975.ap.ngrok.io",
     { transports: ["websocket"] }
   );
 
