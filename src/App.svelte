@@ -8,6 +8,7 @@
   );
 
   let isConnect = true;
+  let isStart = true;
 
   console.log(socket);
   socket.on("connect", (arg) => {
@@ -22,6 +23,7 @@
   });
 
   const resolve = (result) => {
+    isStart = false;
     socket.emit("result", result);
   };
 
@@ -41,7 +43,7 @@
 <Router>
   <Route path="/">
     <main class="flex w-[100vw] h-[100vh] justify-center items-center">
-      {#if isConnect}
+      {#if isConnect && isStart}
         <div class="flex flex-wrap">
           <div class="w-full flex justify-center items-center">
             <button
