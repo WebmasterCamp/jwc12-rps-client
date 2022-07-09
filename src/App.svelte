@@ -1,6 +1,7 @@
 <script>
   import { io } from "socket.io-client";
-  import { Router, Link, Route } from "svelte-navigator";
+  import { onMount } from "svelte";
+  import { Router, Link, Route, navigate } from "svelte-navigator";
   const socket = io(
     "https://9d48-2001-44c8-428c-82d6-b077-bd9b-34af-5647.ap.ngrok.io",
     { transports: ["websocket"] }
@@ -27,6 +28,14 @@
   const resolveShit = (result) => {
     socket.emit("shit", result);
   };
+
+  onMount(() => {
+    window.addEventListener("keydown", (e) => {
+      if ((e.key === "F" || e.key === "f") && e.metaKey) {
+        navigate("/tofu-eating-cat");
+      }
+    });
+  });
 </script>
 
 <Router>
