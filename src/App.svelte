@@ -1,5 +1,6 @@
 <script>
   import { io } from "socket.io-client";
+  import { Router, Link, Route } from "svelte-navigator";
   const socket = io(
     "https://9d48-2001-44c8-428c-82d6-b077-bd9b-34af-5647.ap.ngrok.io",
     { transports: ["websocket"] }
@@ -12,34 +13,62 @@
   const resolve = (result) => {
     socket.emit("result", result);
   };
+
+  const resolveShit = (result) => {
+    socket.emit("shit", result);
+  };
 </script>
 
-<main class="flex w-[100vw] h-[100vh] justify-center items-center">
-  <div class="flex flex-wrap">
-    <div class="w-full flex justify-center items-center">
-      <button
-        on:click={() => {
-          resolve("🪨");
-        }}
-        class="btn">🪨</button
-      >
-      <button
-        on:click={() => {
-          resolve("📄");
-        }}
-        class="btn">📄</button
-      >
-    </div>
-    <div class="flex w-full justify-center items-center">
-      <button
-        on:click={() => {
-          resolve("✂️");
-        }}
-        class="btn">✂️</button
-      >
-    </div>
-  </div>
-</main>
+<Router>
+  <Route path="/">
+    <main class="flex w-[100vw] h-[100vh] justify-center items-center">
+      <div class="flex flex-wrap">
+        <div class="w-full flex justify-center items-center">
+          <button
+            on:click={() => {
+              resolve("🪨");
+            }}
+            class="btn">🪨</button
+          >
+          <button
+            on:click={() => {
+              resolve("📄");
+            }}
+            class="btn">📄</button
+          >
+        </div>
+        <div class="flex w-full justify-center items-center">
+          <button
+            on:click={() => {
+              resolve("✂️");
+            }}
+            class="btn">✂️</button
+          >
+        </div>
+      </div>
+    </main>
+  </Route>
+  <Route path="tofu-eating-cat">
+    <button
+      class="text-8xl p-2 border-2"
+      on:click={() => {
+        resolveShit("win");
+      }}>🏆</button
+    >
+    <button
+      class="text-8xl p-2 border-2"
+      on:click={() => {
+        resolveShit("lose");
+      }}>🥲</button
+    >
+    <button
+      class="text-8xl p-2 border-2"
+      on:click={() => {
+        resolveShit("normal");
+      }}>😀</button
+    >
+  </Route>
+</Router>
 
 <style>
   .btn {
